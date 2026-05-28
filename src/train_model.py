@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import os
 
 from torchvision.datasets import GTSRB
 from torchvision import transforms
@@ -144,7 +145,7 @@ for epoch in range(EPOCHS):
     if val_acc > best_acc:
 
         best_acc = val_acc
-
+        os.makedirs('./models', exist_ok=True)
         torch.save(
             model.state_dict(),
             "./models/gtsrb_resnet18.pth"
